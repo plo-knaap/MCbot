@@ -12,11 +12,11 @@ def pasta(pasta_path, r):
     endtick = 0
     for line in f:
         if endtick == 0:
-            if line != '\n' and sendtick == r[0]:
+            if sendtick == r[0]:
                 longstr = line
                 endtick = 1
                 message = longstr
-            elif line != '\n' and sendtick != r[0]:
+            elif sendtick != r[0]:
                 sendtick += 1              
     f.close
     return message
