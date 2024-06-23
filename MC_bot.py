@@ -62,8 +62,7 @@ def main():
     intents.message_content = True
     client = discord.Client(intents=intents)
 
-    r = [-1, -1, -1]    #random start array for the copy pastas (not working atm when launched with the server)
-    pastas = 7          #the amount of copy pastable entries in the pastas.txt file (not working atm when launched with the server)
+    r = [-1, -1, -1]    #random start array for the copy pastas
     byt = 1073741824    #used to calculate bit-values of RAM
 
    
@@ -110,7 +109,7 @@ def main():
                     await message.channel.send('no')
 
             elif '>fedoramode' == message.content.lower():
-                await message.channel.send(shitpost.pasta(getPath('pasta'), pastas, r))
+                await message.channel.send(shitpost.pasta(getPath('pasta'), r))
         
         except:
             await message.channel.send('Jotain meni pieleen...')

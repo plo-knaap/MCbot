@@ -1,7 +1,8 @@
 import random
 
-def pasta(pasta_path, pastas, r):
+def pasta(pasta_path, r):
     f = open(pasta_path)
+    pastas = len(f.readlines())
     while r[0] == r[1] or r[0] == r[2]:
         r[0] = random.randint(0, pastas - 1)
     r[2] = r[1]
