@@ -10,7 +10,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 from requests import get
 import xml.etree.ElementTree as et
-import shitpost
+import shitposts
 
 
 def getPath(tag):
@@ -109,7 +109,7 @@ def main():
                 await message.channel.send('no')
 
         elif '>fedoramode' == message.content.lower():
-            await message.channel.send(shitpost.pasta(getPath('pasta'), r))
+            await message.channel.send(shitposts.pasta(getPath('pasta'), r))
         
         #except:
         #    await message.channel.send('Jotain meni pieleen...')
