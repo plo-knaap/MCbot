@@ -73,47 +73,47 @@ def main():
 
     @client.event
     async def on_message(message):
-        #try:
-        if '>addr' == message.content.lower() or '>ip' == message.content.lower():
-            await message.channel.send('Servu löytyy osotteesta ' + ip_address)
+        try:
+            if '>addr' == message.content.lower() or '>ip' == message.content.lower():
+                await message.channel.send('Servu löytyy osotteesta ' + ip_address)
 
-        elif '>local' == message.content.lower():
-            await message.channel.send('Servu löytyy sisäisessä verkossa osotteesta ' + local_ip_address)
+            elif '>local' == message.content.lower():
+                await message.channel.send('Servu löytyy sisäisessä verkossa osotteesta ' + local_ip_address)
 
-        elif '>status' == message.content.lower():
-            cputemp = psutil.sensors_temperatures()['coretemp']
-            await message.channel.send('Servu on salee %s\n\nCPU (freq/temp): %5.2fGHz / %5.1f°C\nRAM (used/total): %5.2fGiB / %5.2fGiB' % ((status(), psutil.cpu_freq().current/1000, (cputemp[1].current + cputemp[2].current)/2, (psutil.virtual_memory().total - psutil.virtual_memory().available)/byt, psutil.virtual_memory().total/byt)))
+            elif '>status' == message.content.lower():
+                cputemp = psutil.sensors_temperatures()['coretemp']
+                await message.channel.send('Servu on salee %s\n\nCPU (freq/temp): %5.2fGHz / %5.1f°C\nRAM (used/total): %5.2fGiB / %5.2fGiB' % ((status(), psutil.cpu_freq().current/1000, (cputemp[1].current + cputemp[2].current)/2, (psutil.virtual_memory().total - psutil.virtual_memory().available)/byt, psutil.virtual_memory().total/byt)))
 
-        elif '>help' == message.content.lower():
-            await message.channel.send('käytä ">" komentojen edessä\n\nip, addr, local: antaa ip osotteen\nstatus: antaa tilan (online/offline + muuta)\nstart: käynnistää servun\nskyblock: käynnistää skyblock servun (ei käytössä!!!)\nstop: sammuttaa servun ja tallentaa')
+            elif '>help' == message.content.lower():
+                await message.channel.send('käytä ">" komentojen edessä\n\nip, addr, local: antaa ip osotteen\nstatus: antaa tilan (online/offline + muuta)\nstart: käynnistää servun\nskyblock: käynnistää skyblock servun (ei käytössä!!!)\nstop: sammuttaa servun ja tallentaa')
 
-        elif '>start' == message.content.lower() or 'my brother in christ, start' == message.content.lower():
-            if status() == 'ONLINE':
-                await message.channel.send('Nah, servu taitaa jo olla päällä')
-            elif status() == 'OFFLINE':
-                await message.channel.send('Servu käynnistyy osoitteessa ' + ip_address + '\nPelattuasi sammuta servu >stop komennolla')
-                control('START')
-    
-        elif '>stop' == message.content.lower():
-            if status() == 'ONLINE':
-                await message.channel.send('Yritetään sulkea servu, logi:')
-                grep_stdout = control('STOP')
-                await message.channel.send("\"" + grep_stdout.decode().splitlines()[-1] + "\"")
-
-        elif '>skyblock' == message.content.lower():
-            if status() == 'ONLINE':
-                await message.channel.send('Nah, servu taitaa jo olla päällä')
-            elif status() == 'OFFLINE':
-                #await message.channel.send('Skyblock servu käynnistyy osoitteessa ' + ip_address)
-                #subprocess.run(['skyblock_bot'])
-                await message.channel.send('no')
-
-        elif '>fedoramode' == message.content.lower():
-            await message.channel.send(shitposts.pasta(getPath('pasta'), r))
+            elif '>start' == message.content.lower() or 'my brother in christ, start' == message.content.lower():
+                if status() == 'ONLINE':
+                    await message.channel.send('Nah, servu taitaa jo olla päällä')
+                elif status() == 'OFFLINE':
+                    await message.channel.send('Servu käynnistyy osoitteessa ' + ip_address + '\nPelattuasi sammuta servu >stop komennolla')
+                    control('START')
         
-        #except:
-        #    await message.channel.send('Jotain meni pieleen...')
-        #    print('Jotain meni pieleen...')
+            elif '>stop' == message.content.lower():
+                if status() == 'ONLINE':
+                    await message.channel.send('Yritetään sulkea servu, logi:')
+                    grep_stdout = control('STOP')
+                    await message.channel.send("\"" + grep_stdout.decode().splitlines()[-1] + "\"")
+
+            elif '>skyblock' == message.content.lower():
+                if status() == 'ONLINE':
+                    await message.channel.send('Nah, servu taitaa jo olla päällä')
+                elif status() == 'OFFLINE':
+                    #await message.channel.send('Skyblock servu käynnistyy osoitteessa ' + ip_address)
+                    #subprocess.run(['skyblock_bot'])
+                    await message.channel.send('no')
+
+            elif '>fedoramode' == message.content.lower():
+                await message.channel.send(shitposts.pasta(getPath('pasta'), r))
+        
+        except:
+            await message.channel.send('Jotain meni pieleen...')
+            print('Jotain meni pieleen...')
 
     client.run(TOKEN)
 
