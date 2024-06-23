@@ -10,7 +10,6 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 from requests import get
 import xml.etree.ElementTree as et
-import shitposts
 
 
 def getPath(tag):
@@ -107,15 +106,14 @@ def main():
                     #await message.channel.send('Skyblock servu käynnistyy osoitteessa ' + ip_address)
                     #subprocess.run(['skyblock_bot'])
                     await message.channel.send('no')
-
-            elif '>fedoramode' == message.content.lower():
-                await message.channel.send(shitposts.pasta(getPath('pasta'), r))
-        
+    
         except:
             await message.channel.send('Jotain meni pieleen...')
             print('Jotain meni pieleen...')
 
     client.run(TOKEN)
+
+    return None
 
 
 process = 0         #initialization for the bacground process
