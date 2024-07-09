@@ -6,6 +6,6 @@ Minecraft server discord bot. Iterated over several years based on needs. Requir
     <ip_test_url>https://api.ipify.org</ip_test_url>
     <discord_token>Token</discord_token>
 </paths>
-.```
+```
 
 ip_test_url and discord_token are required for functionality.
