@@ -11,3 +11,5 @@ Minecraft server discord bot. Iterated over several years based on needs. Requir
 ```
 
 ip_test_url and discord_token are required for functionality.
+
+Also requires a bash command "start", which moves to the Minecraft server directory and runs to approprioate java commands to start up the server.
