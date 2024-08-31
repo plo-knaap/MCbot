@@ -5,9 +5,9 @@
 import psutil
 import subprocess
 import socket
-import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
+import discord
 from requests import get
 import xml.etree.ElementTree as et
 
@@ -61,9 +61,7 @@ def main():
     intents.message_content = True
     client = discord.Client(intents=intents)
 
-    r = [-1, -1, -1]    #random start array for the copy pastas
     byt = 1073741824    #used to calculate bit-values of RAM
-
    
     @client.event
     async def on_ready():
@@ -81,14 +79,14 @@ def main():
 
             elif '>status' == message.content.lower():
                 cputemp = psutil.sensors_temperatures()['coretemp']
-                await message.channel.send('Servu on salee %s\n\nCPU (freq/temp): %5.2fGHz / %5.1f°C\nRAM (used/total): %5.2fGiB / %5.2fGiB' % ((status(), psutil.cpu_freq().current/1000, (cputemp[1].current + cputemp[2].current)/2, (psutil.virtual_memory().total - psutil.virtual_memory().available)/byt, psutil.virtual_memory().total/byt)))
+                await message.channel.send('Servu on %s\n\nCPU (freq/temp): %5.2fGHz / %5.1f°C\nRAM (used/total): %5.2fGiB / %5.2fGiB' % ((status(), psutil.cpu_freq().current/1000, (cputemp[1].current + cputemp[2].current)/2, (psutil.virtual_memory().total - psutil.virtual_memory().available)/byt, psutil.virtual_memory().total/byt)))
 
             elif '>help' == message.content.lower():
                 await message.channel.send('käytä ">" komentojen edessä\n\nip, addr, local: antaa ip osotteen\nstatus: antaa tilan (online/offline + muuta)\nstart: käynnistää servun\nskyblock: käynnistää skyblock servun (ei käytössä!!!)\nstop: sammuttaa servun ja tallentaa')
 
             elif '>start' == message.content.lower() or 'my brother in christ, start' == message.content.lower():
                 if status() == 'ONLINE':
-                    await message.channel.send('Nah, servu taitaa jo olla päällä')
+                    await message.channel.send('Servu on jo päällä')
                 elif status() == 'OFFLINE':
                     await message.channel.send('Servu käynnistyy osoitteessa ' + ip_address + '\nPelattuasi sammuta servu >stop komennolla')
                     control('START')

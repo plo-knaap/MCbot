@@ -1,3 +1,5 @@
+# MC_bot
+
 Minecraft server discord bot. Iterated over several years based on needs. Requires a "path_list.xml" file in the following structure:
 
 ```xml
