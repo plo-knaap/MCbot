@@ -82,7 +82,7 @@ def main():
                 await message.channel.send('Servu on %s\n\nCPU (freq/temp): %5.2fGHz / %5.1f°C\nRAM (used/total): %5.2fGiB / %5.2fGiB' % ((status(), psutil.cpu_freq().current/1000, (cputemp[1].current + cputemp[2].current)/2, (psutil.virtual_memory().total - psutil.virtual_memory().available)/byt, psutil.virtual_memory().total/byt)))
 
             elif '>help' == message.content.lower():
-                await message.channel.send('käytä ">" komentojen edessä\n\nip, addr, local: antaa ip osotteen\nstatus: antaa tilan (online/offline + muuta)\nstart: käynnistää servun\nskyblock: käynnistää skyblock servun (ei käytössä!!!)\nstop: sammuttaa servun ja tallentaa')
+                await message.channel.send('käytä ">" komentojen edessä\n\nip, addr, local: antaa ip osotteen\nstatus: antaa tilan (online/offline + muuta)\nstart: käynnistää servun\nstop: sammuttaa servun ja tallentaa\n\nhttps://github.com/plo-knaap/MCbot')
 
             elif '>start' == message.content.lower() or 'my brother in christ, start' == message.content.lower():
                 if status() == 'ONLINE':
