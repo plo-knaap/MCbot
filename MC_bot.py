@@ -65,7 +65,7 @@ def main():
    
     @client.event
     async def on_ready():
-        await client.change_presence(activity=discord.Game('on {}, use >help for help'.format(ip_address)))
+        await client.change_presence(activity=discord.Game('use >help for help'))
         print(f'{client.user} has connected to Discord!')
 
     @client.event
